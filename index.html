@@ -1,426 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate to Consumer Reports | Fighting for Safety, Health, and Fairness</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consumer Reports Activism Hub Prototype</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crGreen: '#237B0B',
+            crGreenDark: '#1A5E08',
+            crInk: '#17202A',
+            crSlate: '#475569',
+            crMist: '#F8FAFC',
+            crBorder: '#E2E8F0',
+            crAmber: '#D97706',
+            crBlue: '#2563EB'
+          },
+          boxShadow: {
+            card: '0 1px 2px rgba(15, 23, 42, 0.08), 0 8px 24px rgba(15, 23, 42, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container">
-      <a href="#" class="logo" aria-label="Consumer Reports Home">
-        <svg width="175" height="32" viewBox="0 0 175 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="32" height="32" rx="4" fill="#FFFFFF"/>
-          <text x="4" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#237B0B">CR</text>
-          <text x="4" y="27" font-family="Arial, sans-serif" font-size="7" fill="#237B0B">Consumer</text>
-          <text x="4" y="23" font-family="Arial, sans-serif" font-size="7" fill="#237B0B"></text>
-          <text x="40" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Consumer Reports</text>
-        </svg>
-      </a>
+<body class="bg-crMist text-crInk min-h-screen">
+  <header class="bg-crGreen text-white border-b border-crGreenDark/40">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex flex-wrap gap-4 items-center justify-between">
+      <div>
+        <p class="text-xs uppercase tracking-[0.18em] text-white/80">Consumer Reports</p>
+        <h1 class="text-2xl font-bold">Activism Hub</h1>
+      </div>
+      <nav class="flex items-center gap-2 text-sm">
+        <a href="#current" class="px-3 py-2 rounded-md hover:bg-white/15">Current Actions</a>
+        <a href="#impact" class="px-3 py-2 rounded-md hover:bg-white/15">Outcomes & Wins</a>
+        <a href="#tracker" class="px-3 py-2 rounded-md hover:bg-white/15">My Activity</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <h1>Fighting for<br>Safety, Health,<br>and Fairness</h1>
-          <p>Memberships and subscriptions don't cover everything we do. Your donation helps us go further.</p>
-          <a href="#donate" class="btn btn-primary">Donate Today</a>
+  <main class="mx-auto max-w-7xl px-6 py-8 space-y-10">
+    <section class="rounded-2xl border border-crBorder bg-white shadow-card p-6 md:p-8">
+      <div class="grid gap-6 md:grid-cols-[2fr_1fr] md:items-end">
+        <div>
+          <span class="inline-flex items-center rounded-full border border-crGreen/30 bg-crGreen/10 px-3 py-1 text-xs font-medium text-crGreen">Prototype • Proof of Concept</span>
+          <h2 class="mt-4 text-3xl md:text-4xl font-semibold leading-tight">See where Consumer Reports is fighting for consumers — and join in.</h2>
+          <p class="mt-4 text-crSlate max-w-3xl">Browse live petitions, events, and policy campaigns. Review past actions and outcomes like recalls, congressional testimony, and policy changes. Track your own participation in one place.</p>
         </div>
-        <div class="hero-image">
-          <svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Emergency responder helping community">
-            <defs>
-              <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#D4845A;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#C47050;stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <rect width="600" height="520" fill="url(#heroGrad)" rx="0"/>
-            <!-- Simplified person silhouette -->
-            <circle cx="300" cy="160" r="60" fill="#E8A882"/>
-            <rect x="240" y="220" width="120" height="180" rx="10" fill="#D94F30"/>
-            <rect x="220" y="230" width="40" height="120" rx="8" fill="#D94F30"/>
-            <rect x="340" y="230" width="40" height="120" rx="8" fill="#D94F30"/>
-            <text x="300" y="470" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Arial" font-size="14">Hero Image Placeholder</text>
-          </svg>
+        <div class="rounded-xl border border-crBorder bg-crMist p-4">
+          <p class="text-xs uppercase tracking-wide text-crSlate">Quick Snapshot</p>
+          <dl class="mt-3 space-y-3">
+            <div class="flex justify-between"><dt>Open Petitions</dt><dd class="font-semibold" id="openPetitionCount">0</dd></div>
+            <div class="flex justify-between"><dt>Upcoming Events</dt><dd class="font-semibold" id="upcomingEventCount">0</dd></div>
+            <div class="flex justify-between"><dt>Resolved Campaigns</dt><dd class="font-semibold" id="resolvedIssueCount">0</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- What Your Donation Helps Make Possible -->
-    <section class="donation-impact">
-      <div class="container">
-        <div class="section-header-row">
-          <h2>What your donation helps make possible</h2>
-          <div class="carousel-nav">
-            <button class="carousel-arrow carousel-prev" aria-label="Previous">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="carousel-arrow carousel-next" aria-label="Next">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
+    <section id="current" class="space-y-5">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-semibold">Current Advocacy Initiatives</h2>
+          <p class="text-crSlate">Static demo data shown below. Filter by action type.</p>
         </div>
-        <div class="carousel-track">
-          <!-- Card 1 -->
-          <div class="impact-card">
-            <div class="impact-card-image" style="background-color: #F5E6D3;">
-              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Children's product safety testing">
-                <rect width="400" height="240" fill="#E8D5C0"/>
-                <circle cx="150" cy="100" r="40" fill="#F0C8A0"/>
-                <circle cx="250" cy="110" r="35" fill="#D4A882"/>
-                <rect x="120" y="150" width="60" height="70" rx="6" fill="#F0C8A0"/>
-                <rect x="225" y="155" width="50" height="65" rx="6" fill="#D4A882"/>
-                <text x="200" y="30" text-anchor="middle" fill="rgba(0,0,0,0.3)" font-family="Arial" font-size="12">Children &amp; Products</text>
-              </svg>
-            </div>
-            <div class="impact-card-body">
-              <h3>Raising the Standards for Children's Products</h3>
-              <p>Exposing the dangers of dollar channel and hazardous substances in toys, while demanding that standards require better design, rigorous testing, and clearer warning labels.</p>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="impact-card">
-            <div class="impact-card-image" style="background-color: #E0EBD8;">
-              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Food safety testing">
-                <rect width="400" height="240" fill="#D5E4CB"/>
-                <circle cx="130" cy="120" r="50" fill="#A8C896"/>
-                <circle cx="270" cy="110" r="45" fill="#8BB878"/>
-                <rect x="170" y="80" width="60" height="100" rx="8" fill="#C5D9B8"/>
-                <text x="200" y="30" text-anchor="middle" fill="rgba(0,0,0,0.3)" font-family="Arial" font-size="12">Food Safety</text>
-              </svg>
-            </div>
-            <div class="impact-card-body">
-              <h3>Removing Dangerous Toxins from Food</h3>
-              <p>Sounding the alarm on pesticides in food, dangers in our water and lead in our homes — with more of these reports leading to better federal protections for consumers.</p>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="impact-card">
-            <div class="impact-card-image" style="background-color: #D8E5EE;">
-              <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Car safety testing">
-                <rect width="400" height="240" fill="#C8D8E8"/>
-                <rect x="80" y="100" width="240" height="90" rx="20" fill="#9AB8D4"/>
-                <circle cx="140" cy="195" r="25" fill="#7A9AB8"/>
-                <circle cx="270" cy="195" r="25" fill="#7A9AB8"/>
-                <rect x="100" y="80" width="180" height="60" rx="12" fill="#A8C4DA"/>
-                <text x="200" y="30" text-anchor="middle" fill="rgba(0,0,0,0.3)" font-family="Arial" font-size="12">Car Safety</text>
-              </svg>
-            </div>
-            <div class="impact-card-body">
-              <h3>Advancing Safer Car Standards</h3>
-              <p>Fighting to make anti-rollover, automatic crash avoidance, and other life-saving technologies standard in every car, in every class, in every price range.</p>
-            </div>
-          </div>
+        <div class="flex gap-2" role="tablist" aria-label="Action type filter">
+          <button data-filter="all" class="filter-btn rounded-md border border-crBorder px-3 py-2 text-sm bg-crGreen text-white">All</button>
+          <button data-filter="petition" class="filter-btn rounded-md border border-crBorder px-3 py-2 text-sm bg-white hover:bg-slate-50">Petitions</button>
+          <button data-filter="event" class="filter-btn rounded-md border border-crBorder px-3 py-2 text-sm bg-white hover:bg-slate-50">Events</button>
+          <button data-filter="issue" class="filter-btn rounded-md border border-crBorder px-3 py-2 text-sm bg-white hover:bg-slate-50">Issues</button>
+        </div>
+      </div>
+      <div id="initiativeGrid" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section id="impact" class="space-y-5">
+      <div>
+        <h2 class="text-2xl font-semibold">Past Actions & Outcomes</h2>
+        <p class="text-crSlate">Examples of what action can accomplish over time.</p>
+      </div>
+      <div id="outcomeTimeline" class="space-y-4"></div>
+    </section>
+
+    <section id="tracker" class="rounded-2xl border border-crBorder bg-white shadow-card p-6">
+      <h2 class="text-2xl font-semibold">My Activism Tracker (Local)</h2>
+      <p class="text-crSlate mt-2">Mark any initiative as completed to simulate personal progress tracking. Stored in your browser only.</p>
+      <div class="mt-4 grid gap-4 md:grid-cols-3">
+        <div class="rounded-xl border border-crBorder p-4 bg-crMist">
+          <p class="text-sm text-crSlate">Actions Completed</p>
+          <p id="completedActions" class="text-3xl font-bold">0</p>
+        </div>
+        <div class="rounded-xl border border-crBorder p-4 bg-crMist">
+          <p class="text-sm text-crSlate">Petitions Signed</p>
+          <p id="signedPetitions" class="text-3xl font-bold">0</p>
+        </div>
+        <div class="rounded-xl border border-crBorder p-4 bg-crMist">
+          <p class="text-sm text-crSlate">Events RSVP’d</p>
+          <p id="attendedEvents" class="text-3xl font-bold">0</p>
         </div>
       </div>
     </section>
-
-    <!-- Accountability Section -->
-    <section class="accountability">
-      <div class="container accountability-grid">
-        <div class="accountability-left">
-          <div class="stars-row">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="#237B0B"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="#237B0B"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="#237B0B"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="#237B0B"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          </div>
-          <p class="nonprofit-label"><strong>Four-Star Nonprofit</strong><br><span class="rating-score">98% Rating!</span></p>
-          <ul class="check-list">
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#237B0B"/><path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Accountability &amp; Finance
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#237B0B"/><path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Impact &amp; Measurement
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#237B0B"/><path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Leadership &amp; Planning
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#237B0B"/><path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Culture &amp; Compensation
-            </li>
-          </ul>
-          <p class="attribution">Based on <a href="#">Charity Navigator's</a> 2024 rating of Consumer Reports</p>
-        </div>
-        <div class="accountability-right">
-          <h2>Accountability goes both ways.</h2>
-          <p>Because Consumer Reports is a 501(c)(3) nonprofit, every dollar you give is independently verified and publicly accountable. When we ask for your trust, we should be able to prove we've earned it.</p>
-          <p class="highlight-stat">Of every dollar we receive, 86.2 cents goes toward our mission.</p>
-          <div class="partner-logos">
-            <svg width="60" height="40" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" rx="4" fill="#E8E8E8"/><text x="30" y="24" text-anchor="middle" fill="#999" font-family="Arial" font-size="8">BBB</text></svg>
-            <svg width="60" height="40" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" rx="4" fill="#E8E8E8"/><text x="30" y="24" text-anchor="middle" fill="#999" font-family="Arial" font-size="8">GuideStar</text></svg>
-            <svg width="60" height="40" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" rx="4" fill="#E8E8E8"/><text x="30" y="24" text-anchor="middle" fill="#999" font-family="Arial" font-size="8">Candid</text></svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Banner CTA -->
-    <section class="banner-cta">
-      <div class="banner-overlay"></div>
-      <div class="container banner-content">
-        <h2>We don't just test products.<br>We change the rules around them.</h2>
-        <div class="banner-buttons">
-          <a href="#" class="btn btn-primary">Become a Member</a>
-          <a href="#donate" class="btn btn-primary">Donate Now</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature Cards -->
-    <section class="features">
-      <div class="container features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 4L4 14V24C4 35 13 44 24 44C35 44 44 35 44 24V14L24 4Z" stroke="#1A1A1A" stroke-width="2" fill="none"/>
-              <path d="M16 24L22 30L34 18" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>Advocacy &amp; Policy Change</h3>
-          <p>We champion consumer rights and fight for pro-consumer policies in government and industry.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="14" width="36" height="28" rx="3" stroke="#1A1A1A" stroke-width="2" fill="none"/>
-              <path d="M6 22H42" stroke="#1A1A1A" stroke-width="2"/>
-              <path d="M18 14V8H30V14" stroke="#1A1A1A" stroke-width="2" fill="none"/>
-              <circle cx="24" cy="32" r="4" stroke="#1A1A1A" stroke-width="2" fill="none"/>
-            </svg>
-          </div>
-          <h3>Product Testing</h3>
-          <p>Our 25-plus and 50+ acre Auto Test Center test on the expertise of 150+ researchers, scientists, and engineers.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="20" r="14" stroke="#1A1A1A" stroke-width="2" fill="none"/>
-              <path d="M24 34V44" stroke="#1A1A1A" stroke-width="2"/>
-              <path d="M18 44H30" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-              <path d="M20 20L24 12L28 20" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="M18 24H30" stroke="#1A1A1A" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <h3>Rigorous Research</h3>
-          <p>We combine lab testing with real-world surveys from hundreds of thousands of product owners nationwide.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 6H32L40 14V42H8V6Z" stroke="#1A1A1A" stroke-width="2" fill="none"/>
-              <path d="M32 6V14H40" stroke="#1A1A1A" stroke-width="2"/>
-              <path d="M14 22H34" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-              <path d="M14 28H34" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-              <path d="M14 34H26" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Investigative Journalism</h3>
-          <p>We've won 90+ journalism awards for helping the 1st to uncover the dangers others ignore.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-      <div class="container">
-        <h2>What members and donors<br>made possible in 2025</h2>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">34</div>
-            <div class="stat-title">Congressional Testimonies</div>
-            <p>Pushing for stronger safety standards, fairer pricing, and better protections.</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">20+</div>
-            <div class="stat-title">Policy Changes &amp; Recalls</div>
-            <p>Directly contributed to more than 20 regulatory changes and product recalls.</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">2.3k</div>
-            <div class="stat-title">Products Purchased &amp; Tested</div>
-            <p>Put to the test in our labs, in-context relationships and tested rigorously in our 42-acre site.</p>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">604</div>
-            <div class="stat-title">Reader-Driven Articles</div>
-            <p>Researched, data-driven journalism and D.C.-based advocacy covering year-round.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Product Images -->
-    <section class="product-images">
-      <div class="container product-grid">
-        <div class="product-image-card">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Protein powder testing">
-            <rect width="400" height="300" fill="#2D2D2D"/>
-            <rect x="140" y="40" width="120" height="200" rx="8" fill="#F5F0E8"/>
-            <text x="200" y="130" text-anchor="middle" fill="#333" font-family="Arial" font-size="11" font-weight="bold">THIS IS</text>
-            <text x="200" y="148" text-anchor="middle" fill="#333" font-family="Arial" font-size="11" font-weight="bold">WHEY</text>
-            <text x="200" y="170" text-anchor="middle" fill="#237B0B" font-family="Arial" font-size="14" font-weight="bold">PROTEIN</text>
-            <text x="200" y="190" text-anchor="middle" fill="#237B0B" font-family="Arial" font-size="14" font-weight="bold">POWDER</text>
-          </svg>
-        </div>
-        <div class="product-image-card">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sunscreen and water safety testing">
-            <rect width="400" height="300" fill="#87CEEB"/>
-            <rect x="100" y="50" width="90" height="160" rx="6" fill="#F0E8D0"/>
-            <text x="145" y="110" text-anchor="middle" fill="#333" font-family="Arial" font-size="9" font-weight="bold">IS THIS</text>
-            <text x="145" y="125" text-anchor="middle" fill="#333" font-family="Arial" font-size="9" font-weight="bold">WATER</text>
-            <text x="145" y="140" text-anchor="middle" fill="#333" font-family="Arial" font-size="9" font-weight="bold">SAFE?</text>
-            <circle cx="290" cy="150" r="60" fill="#F5E6C8"/>
-            <text x="290" y="140" text-anchor="middle" fill="#333" font-family="Arial" font-size="11">ANT?</text>
-            <text x="290" y="165" text-anchor="middle" fill="#333" font-family="Arial" font-size="20" font-weight="bold">SPF50</text>
-          </svg>
-        </div>
-        <div class="product-image-card">
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dishwasher detergent testing">
-            <rect width="400" height="300" fill="#1B4332"/>
-            <circle cx="280" cy="150" r="80" fill="#2D5A3D" stroke="#3A7D52" stroke-width="2"/>
-            <text x="280" y="125" text-anchor="middle" fill="#8BC48A" font-family="Arial" font-size="10">Will My Dishes</text>
-            <text x="280" y="145" text-anchor="middle" fill="#8BC48A" font-family="Arial" font-size="10">Be Dry When</text>
-            <text x="280" y="165" text-anchor="middle" fill="#8BC48A" font-family="Arial" font-size="10">It's Done?</text>
-            <rect x="80" y="70" width="120" height="170" rx="6" fill="#2A5A3A"/>
-            <text x="140" y="160" text-anchor="middle" fill="#6AB06A" font-family="Arial" font-size="12">Detergent</text>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta" id="donate">
-      <div class="container">
-        <h2>The fight continues. Be part of it.</h2>
-        <p>All our successes are achieved with the support of members and donors like you. Together, we can make a lasting impact.</p>
-        <a href="#" class="btn btn-primary">Donate Now</a>
-        <p class="disclaimer">Consumer Reports is a nonprofit organization qualified under Section 501(c)(3) of the Internal Revenue Code. Your contribution is tax-deductible to the extent allowed by law.</p>
-      </div>
-    </section>
-
-    <!-- Pre-Footer Banner -->
-    <div class="pre-footer">
-      <div class="container">
-        <p>Learn about <a href="#">other ways to support our work</a>, including donor-advised funds and other estate planning tools.</p>
-      </div>
-    </div>
-
   </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <svg width="160" height="32" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="4" fill="#FFFFFF"/>
-            <text x="4" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#237B0B">CR</text>
-            <text x="4" y="27" font-family="Arial, sans-serif" font-size="7" fill="#237B0B">Consumer</text>
-          </svg>
-          <p class="footer-tagline">Consumer Reports is an independent, nonprofit member organization that works side by side with consumers for truth, transparency, and fairness in the marketplace.</p>
-          <a href="#" class="btn btn-outline-light">Become a Member</a>
-          <a href="#" class="btn btn-outline-light">Give a Membership</a>
-        </div>
-        <div class="footer-links-grid">
-          <div class="footer-col">
-            <h4>Reviews &amp; Advice</h4>
-            <ul>
-              <li><a href="#">Appliances</a></li>
-              <li><a href="#">Babies &amp; Kids</a></li>
-              <li><a href="#">Cars</a></li>
-              <li><a href="#">Electronics</a></li>
-              <li><a href="#">Health</a></li>
-              <li><a href="#">Home &amp; Garden</a></li>
-              <li><a href="#">Money</a></li>
-              <li><a href="#">All Products A-Z</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Media Room</a></li>
-              <li><a href="#">Advocacy</a></li>
-              <li><a href="#">Make a Donation</a></li>
-              <li><a href="#">Give a Membership</a></li>
-              <li><a href="#">Annual Meeting</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Resources</h4>
-            <ul>
-              <li><a href="#">CR Magazine</a></li>
-              <li><a href="#">CR Store</a></li>
-              <li><a href="#">Newsletters</a></li>
-              <li><a href="#">Videos</a></li>
-              <li><a href="#">en Espa&ntilde;ol</a></li>
-              <li><a href="#">BuyersGuide/CR</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>For Businesses</h4>
-            <ul>
-              <li><a href="#">Brand Intelligence</a></li>
-              <li><a href="#">Data Intelligence</a></li>
-              <li><a href="#">Innovation</a></li>
-              <li><a href="#">Partnerships</a></li>
-            </ul>
-            <h4>Support</h4>
-            <ul>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Account Settings</a></li>
-              <li><a href="#">About Membership</a></li>
-              <li><a href="#">Submit a News Tip</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-social">
-        <a href="#" aria-label="Facebook">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="#" aria-label="Twitter">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-        </a>
-        <a href="#" aria-label="Instagram">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
-        </a>
-        <a href="#" aria-label="YouTube">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#1B4332"/></svg>
-        </a>
-        <a href="#" aria-label="Pinterest">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.15 9.42 7.6 11.18-.1-.94-.2-2.38.04-3.4.22-.92 1.4-5.92 1.4-5.92s-.36-.72-.36-1.78c0-1.66.96-2.9 2.16-2.9 1.02 0 1.52.76 1.52 1.68 0 1.02-.66 2.56-.98 3.98-.28 1.18.58 2.14 1.74 2.14 2.08 0 3.68-2.2 3.68-5.36 0-2.8-2.02-4.76-4.9-4.76-3.34 0-5.3 2.5-5.3 5.08 0 1.06.38 2.14.88 2.74.1.12.1.22.08.34-.1.38-.3 1.18-.34 1.34-.06.22-.18.26-.4.16-1.5-.7-2.44-2.88-2.44-4.64 0-3.78 2.74-7.24 7.92-7.24 4.16 0 7.4 2.96 7.4 6.94 0 4.14-2.6 7.46-6.22 7.46-1.22 0-2.36-.62-2.74-1.38l-.74 2.84c-.28 1.06-1.02 2.38-1.52 3.18C9.58 23.78 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-legal-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">User Agreement</a>
-          <a href="#">Refund Policy</a>
-          <a href="#">Ad Choices</a>
-          <a href="#">Your Privacy Choices</a>
-          <a href="#">Sitemap</a>
-        </div>
-        <p class="copyright">&copy; 2025 Consumer Reports, Inc.</p>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/main.js"></script>
 </body>
